@@ -1,0 +1,45 @@
+﻿@model Irisi_Bruno_lab3.Models.Movie
+@{
+    ViewData["Title"] = "MovieUpload";
+}
+
+<div class="container">
+    <div class="row">
+
+        <div class="col">
+        </div>
+
+        <div class="col-6 add-border spacer">
+            <form asp-action="Upload" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="top-spacer bottom-spacer grey">
+                    <h1>Movie Upload</h1>
+                </div>
+
+                <div class="form-group">
+                    <label>Movie Title</label>
+                    <input asp-for="MovieTitle" class="form-control" name="movieTitle" />
+                    <span asp-validation-for="MovieTitle" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Select Movie File</label>
+                    <input type="file" asp-for="S3UrlVideo" name="videoFile" class="form-control" />
+                    <span asp-validation-for="S3UrlVideo" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Select Poster Image</label>
+                    <input type="file" asp-for="S3UrlImage" name="imageFile" class="form-control" />
+                    <span asp-validation-for="S3UrlImage" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-lg btn-primary btn-block bottom-spacer">UPLOAD</button>
+            </form>
+        </div>
+
+        <div class="col">
+        </div>
+
+    </div>
+</div>

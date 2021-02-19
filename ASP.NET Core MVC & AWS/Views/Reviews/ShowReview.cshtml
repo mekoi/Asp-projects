@@ -1,0 +1,129 @@
+﻿@model DynamoReview
+
+@{
+    ViewData["Title"] = "ShowReviews";
+}
+
+<div class="container">
+    <div class="row">
+
+        <div class="col">
+            <div class="text-center top-spacer bottom-spacer grey">
+                @if (ViewBag.Movie != null)
+                {
+                    <h1><b>@ViewBag.Movie.MovieTitle - Review</b></h1>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="text-center top-spacer bottom-spacer grey">
+
+                <div class="alert alert-primary text-center" role="alert">
+                    @if (ViewBag.Movie != null)
+                    {
+                        <h3>Average Movie Rating @ViewBag.AverageMovieRating/5</h3>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="top-spacer bottom-spacer grey">
+                <h3>Comment Section</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            @if (ViewBag.movieReviews != null)
+            {
+
+                foreach (var review in ViewBag.movieReviews)
+                {
+                    
+                <div class="border top-spacer">
+                    <div class="col top-spacer">
+
+                        <h5>Written by <span class="badge badge-primary">@review.UserName</span></h5>
+
+                        <div class="alert alert-secondary top-spacer" role="alert">
+                            <h6>@review.Review_Text</h6> 
+                        </div>
+
+
+                     
+                            <h6>Review Date: <span class="badge badge-info">@review.ReviewMadeAt</span></h6> <h6>User Rating: <span class="badge badge-success">@review.Stars/5</span></h6>
+                       
+                    </div>
+                </div>
+
+                }
+            }
+            else
+            {
+                <h6>There are no reviews for this movie. Please leave one.</h6>
+            }
+
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="top-spacer bottom-spacer grey">
+                <h3>Leave a Review</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col">
+
+            <form asp-action="PostReview" method="post" asp-controller="Reviews" class="form-signin">
+                <div class="form-group">
+                    <textarea asp-for="Review_Text" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    @if (ViewBag.Id != null)
+                    {
+                        <input type="hidden" id="MovieId" asp-for="Movie_Id" asp-route-id="@ViewBag.Id" name="Movie_Id" value="@ViewBag.Id" />
+                    }
+
+                </div>
+                <div class="form-group">
+                    <h3><label for="exampleFormControlSelect1">Rate the Movie</label></h3>
+                    <select asp-for="Stars" class="form-control" id="exampleFormControlSelect1">
+                        <option hidden disabled selected value="111">-- select a rating 1 to 5 --</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Post Review</button>
+            </form>
+
+        </div>
+
+    </div>
+</div>
+
+
+

@@ -1,0 +1,22 @@
+﻿@model Irisi_M_301072868.Models.Club
+
+<div>
+    <h1>Club Detail</h1>
+
+    <table class="table table-responsive" border="1" style="width:40%; margin-left:0%">
+        <thead>
+            <tr>
+                <th style="width:33%;text-align:center">Club Name</th>
+                <th style="width:33%;text-align:center">Age Range</th>
+                <th style="width:33%;text-align:center">Created Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.ClubName</td>
+                <td>@Model.AgeRange</td>
+                <td>@Model.CreatedDate.ToString("MMM dd, yyyy")</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

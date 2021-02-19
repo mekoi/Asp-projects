@@ -1,0 +1,44 @@
+﻿@model Irisi_Bruno_lab3.Models.ViewModels.UserViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="container">
+    <div class="row">
+
+        <div class="col">
+        </div>
+
+        <div class="col-6 add-border spacer">
+            <form asp-action="Register">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="top-spacer bottom-spacer grey">
+                    <h1>Register</h1>
+                </div>
+
+                <div class="form-group">
+                    <input asp-for="UserName" type="text" id="UserName" class="form-control" placeholder="UserName" required autofocus>
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="UserPassword" type="password" id="UserPassword" class="form-control" placeholder="Password" required autofocus>
+                    <span asp-validation-for="UserPassword" class="text-danger"></span>
+                </div>
+                <div class="form-group ">
+                    <input asp-for="ConfirmPassword" type="password" id="ConfirmPassword" class="form-control" placeholder="Password" required autofocus>
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-lg btn-primary btn-block bottom-spacer">CREATE ACCOUNT</button>
+            </form>
+        </div>
+
+        <div class="col">
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

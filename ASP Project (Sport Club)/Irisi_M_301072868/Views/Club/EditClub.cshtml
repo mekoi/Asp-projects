@@ -1,0 +1,43 @@
+﻿@model Irisi_M_301072868.Models.Club
+    <form asp-action="EditClub">
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        <input type="hidden" asp-for="ClubId" />
+        <div>
+            <label asp-for="ClubName">Club Name:</label>
+            <input asp-for="ClubName" required />
+        </div>
+        <div>
+            <label asp-for="AgeRange">Age Range:</label>
+            @{
+                List<SelectListItem> ageRanges = new List<SelectListItem>();
+                ageRanges.Add(new SelectListItem { Text = "4-5 years old", Value = "4-5 years old" });
+                ageRanges.Add(new SelectListItem { Text = "6-7 years old", Value = "6-7 years old" });
+                ageRanges.Add(new SelectListItem { Text = "8-9 years old", Value = "8-9 years old" });
+                ageRanges.Add(new SelectListItem { Text = "0-11 years old", Value = "0-11 years old" });
+                ageRanges.Add(new SelectListItem { Text = "12-13 years old", Value = "12-13 years old" });
+                ageRanges.Add(new SelectListItem { Text = "14-15 years old", Value = "14-15 years old" });
+                ageRanges.Add(new SelectListItem { Text = "16-17 years old", Value = "16-17 years old" });
+            }
+            <select asp-for="AgeRange" required>
+                <option value="">Choose an age range</option>
+                @foreach (var item in ageRanges)
+                {
+                    if (Model.AgeRange == item.Value)
+                    {
+                        <option value="@item.Value" selected>@item.Text</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                }
+            </select>
+        </div>
+        <div>
+            <label asp-for="CreatedDate">Created Date:</label>
+            <input asp-for="CreatedDate" class="form-control" required />
+        </div>
+        <div>
+            <button type="submit"> Update</button>
+        </div>
+    </form>

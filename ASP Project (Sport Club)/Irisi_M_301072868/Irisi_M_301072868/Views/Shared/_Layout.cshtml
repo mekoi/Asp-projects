@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/ccs/MyStyleSheet.css" />   
+    <title>@ViewBag.Title | Iris Football</title>
+</head>
+<body>
+    <header>
+        <img src="~/images/iris_logo.png">
+        <nav>
+            <ul>
+                <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a asp-controller="Club" asp-action="AvailableClubs">Available Clubs</a></li>
+                <li><a asp-controller="Home" asp-action="ClubDetailsEmpty">Club Details</a></li>
+                <li><a asp-controller="Home" asp-action="AddClub">Add Club</a></li>
+                <li><a asp-controller="Players" asp-action="ManagePlayers">Manage Players</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div>
+        <img src="~/images/soccer_background_2.jpg">
+    </div>
+    <div id="mainDiv">
+        @RenderBody()
+    </div>
+</body>
+</html>

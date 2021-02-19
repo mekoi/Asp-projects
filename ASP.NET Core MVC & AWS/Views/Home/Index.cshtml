@@ -1,0 +1,35 @@
+﻿@model Irisi_Bruno_lab3.Models.Movie
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center top-spacer bottom-spacer grey">
+    <h1><b>Dowload and upload your favorite movies</b></h1>
+</div>
+
+<div class="container">
+    <div class="row">
+
+
+        @if (ViewBag.movies != null)
+        {
+            foreach (var item in ViewBag.Movies)
+            {
+
+                <div class="col-sm-4 top-spacer text-center">
+                <div class="h4 text-center grey">@item.MovieTitle</div>
+                <div class="poster-spacer">
+                    <img src="@item.S3UrlImage" style="width:318px; height:450px;">
+                </div>
+                    <a class="btn btn-lg btn-primary btn-block" asp-controller="Reviews" asp-action="ShowReview" asp-route-id="@item.MovieId">REVIEWS</a>
+                    <a role="button" class="btn btn-lg btn-success btn-block" href="@item.S3UrlVideo"> DOWNLOAD </a>
+                </div>
+
+            }
+        }
+
+    </div>
+</div>
+
+

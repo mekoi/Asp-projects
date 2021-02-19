@@ -1,0 +1,32 @@
+﻿@using Irisi_M_301072868.Models
+@model IEnumerable<Club>
+@{ 
+    ViewBag.Title = "Clubs";
+}
+@if (ViewBag.SuccessMsg != null)
+{
+    <h3 style="color:forestgreen">@ViewBag.SuccessMsg</h3>
+}
+<table class="table table-responsive" border="1" style="width:40%; margin-left:0%">
+    <thead>
+        <tr>
+            <th style="width:25%;text-align:center">Club Name</th>
+            <th style="width:25%;text-align:center">Age Range</th>
+            <th style="width:25%;text-align:center">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Club in Model)
+        {
+            <tr>
+                <td>@Club.ClubName</td>
+                <td>@Club.AgeRange</td>
+                <td style="text-align:center">
+                    <a asp-action="ViewClubDetail" asp-controller="Club" asp-route-id="@Club.ClubId" style="text-decoration:none">View</a>
+                    <a asp-action="EditClub" asp-controller="Club" asp-route-id="@Club.ClubId" style="text-decoration:none">Edit</a>
+                    <a asp-action="DeleteClub" asp-controller="Club" asp-route-id="@Club.ClubId" style="text-decoration:none">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

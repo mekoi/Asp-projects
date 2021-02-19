@@ -1,0 +1,54 @@
+﻿@model Irisi_M_301072868.Models.Player
+
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add NewPlayer</title>
+</head>
+<body>
+    <h1 class="text-uppercase text-white font-weight-bold text-center">Please fill the below information to enter new Player</h1>
+    <form asp-action="Create" asp-controller="Players" method="post">
+        <div>
+            <label asp-for="FirstName">First Name:</label>
+            <input asp-for="FirstName" required />
+        </div>
+        <div>
+            <label asp-for="LastName">Last Name:</label>
+            <input asp-for="LastName" required />
+        </div>
+        <div>
+            <label asp-for="ClubId">Club Name:</label>
+            <select asp-for="ClubId" asp-items="@(new SelectList(ViewBag.clubsList, "ClubId", "ClubName"))">
+            </select>
+        </div>
+        <div>
+            <label asp-for="ClubJoinedDate">Joining Date:</label>
+            <input asp-for="ClubJoinedDate" required />
+        </div>
+        <div>
+            <label asp-for="DayOfBirth">Day Of Birth:</label>
+            <input asp-for="DayOfBirth" required />
+        </div>
+        <div>
+            <label asp-for="Email">Email:</label>
+            <input asp-for="Email" required />
+        </div>
+        <div>
+            <label asp-for="PhoneNo">Phone:</label>
+            <input asp-for="PhoneNo" required />
+        </div>
+        <div>
+            <label asp-for="Gender">Gender:</label>
+            <label asp-for="Gender">Male<input type="radio" asp-for="Gender" value="Male" /></label>
+            <label asp-for="Gender">Female<input type="radio" asp-for="Gender" value="Female" /></label>
+        </div>
+        <div>
+            <a asp-action="index" asp-controller="Players" style="text-decoration:none">
+                <button type="button" class="btn btn-danger">CANCEL</button>
+            </a>
+            <button type="submit" class="btn btn-success">SAVE</button>
+        </div>
+    </form>
+</body>
+</html>

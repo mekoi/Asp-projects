@@ -1,0 +1,1 @@
+This ASP.NET Core MVC allows users to upload movies and write reviews related to this movies. ASW resources (Elastic Beanstalk, RDS, DynamoDB, S3, IAM) are used to implement applications functionalities.
